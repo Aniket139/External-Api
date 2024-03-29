@@ -34,6 +34,7 @@ gem 'koala'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'devise'
 # postgreSqi
 gem 'pg'
 

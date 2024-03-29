@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   # get "up" => "rails/health#show", as: :rails_health_check
 
-  root to: 'users#index', via: :get
-  get 'auth/facebook', as: "auth_provider"
-  get 'auth/facebook/callback', to: 'users#login'
+# `  root to: 'users#index', via: :get`
+  # get 'auth/facebook', as: "auth_provider"
+  # get 'auth/facebook/callback', to: 'users#login'
+  get '/auth/facebook/callback', to: 'omniauth_callbacks#facebook'
 end
