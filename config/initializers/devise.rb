@@ -304,8 +304,19 @@ Devise.setup do |config|
   # Note: These might become the new default in future versions of Devise.
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
-  config.omniauth :facebook, "APP_ID", "APP_SECRET"
+  config.omniauth :facebook, "client_id", "client_secret"
   config.omniauth_path_prefix = "/users/auth"
+
+  config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :client_id),
+  Rails.application.credentials.dig(:facebook, :client_secret),
+  callback_url: Rails.application.credentials.dig(:facebook, :callback_url),
+  scope: 'pages_manage_cta,
+        pages_manage_instant_articles,
+        pages_show_list,
+        leads_retrieval,
+        read_insights',
+  auth_type: 'reauthenticate',
+  token_params: { parse: :json }
  # config.omniauth :facebook, Rails.application.credentials.facebook[:APP_ID], Rails.application.credentials.facebook[:APP_SECRET], token_params: { parse: :json }
 
   # ==> Configuration for :registerable
