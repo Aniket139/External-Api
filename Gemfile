@@ -33,8 +33,10 @@ gem "redis", ">= 4.0.1"
 gem 'koala'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
 gem 'devise'
+gem 'haml'
 # postgreSqi
 gem 'pg'
 
